@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "gaptool-api"
   gem.homepage = "http://github.com/mattbailey/gaptool-api"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{gaptool-server ruby API}
+  gem.description = %Q{gaptool-server ruby API}
   gem.email = "m@mdb.io"
   gem.authors = ["Matt Bailey"]
   # dependencies defined in Gemfile
