@@ -7,7 +7,7 @@ module GTAPI
 
     def initialize(user, apikey, uri)
       @auth = { 'X-GAPTOOL-USER' => user, 'X-GAPTOOL-KEY' => apikey}
-      self.base_uri uri
+      GaptoolServer.base_uri uri
     end
 
     def getonenode(role, environment, id)
