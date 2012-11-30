@@ -37,6 +37,12 @@ module GTAPI
       JSON::parse self.class.post("/terminate", options)
     end
 
+    def getappnodes(app, environment)
+      options = {:headers => @auth}
+      role = JSON::parse(self.class.get("/apps", options))["app:#{app}"]['role']
+      JSON::parse self.class.get("/hosts/#{role}/#{environment}", options)
+    end
+
     def ssh(role, environment, id)
       options = { :headers => @auth}
       JSON::parse self.class.get("/ssh/#{role}/#{environment}/#{id}", options)
