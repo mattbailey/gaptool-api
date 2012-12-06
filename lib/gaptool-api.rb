@@ -61,6 +61,7 @@ module GTAPI
     def regenhosts(zone)
       @body = {'zone' => zone}.to_json
       options = {:body => @body, :headers => @auth}
+      JSON::parse self.class.post("/regenhosts", options)
     end
   end
 end
