@@ -20,13 +20,23 @@ module GTAPI
       JSON::parse self.class.get("/hosts/#{role}/#{environment}", options)
     end
 
-    def addnode(zone, itype, role, environment)
-      @body = {
-        'zone' => zone,
-        'itype' => itype,
-        'role' => role,
-        'environment' => environment,
-      }.to_json
+    def addnode(zone, itype, role, environment, mirror=0)
+      if mirror == 0
+        @body = {
+          'zone' => zone,
+          'itype' => itype,
+          'role' => role,
+          'environment' => environment,
+        }.to_json
+      else
+        @body = {
+          'zone' => zone,
+          'itype' => itype,
+          'role' => role,
+          'environment' => environment,
+          'mirror' => mirror,
+        }.to_json
+      end
       options = { :body => @body, :headers => @auth}
       JSON::parse self.class.post("/init", options)
     end
