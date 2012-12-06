@@ -47,5 +47,10 @@ module GTAPI
       options = { :headers => @auth}
       JSON::parse self.class.get("/ssh/#{role}/#{environment}/#{id}", options)
     end
+
+    def regenhosts(zone)
+      @body = {'zone' => zone}.to_json
+      options = {:body => @body, :headers => @auth}
+    end
   end
 end
