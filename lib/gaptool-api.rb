@@ -63,5 +63,37 @@ module GTAPI
       options = {:body => @body, :headers => @auth}
       JSON::parse self.class.post("/regenhosts", options)
     end
+
+    def addservice(role, environment, name, keys, weight, enabled)
+      @body => {
+        'name' => name,
+        'keys' => keys,
+        'weight' => weight,
+        'endabled' => enabled,
+        'role' => role,
+        'environment' => environment
+      }
+      options = {:body => @body, :headers => @auth}
+      # output is service count
+      JSON::parse self.class.put("/service/#{role}/#{environment}", options)
+    end
+
+    def deleteservice(role, environment, name)
+      options = { :headers => @auth}
+      # output is service count
+      JSON::parse self.class.delete("/service/#{role}/#{environment}/#{name}", options)
+    end
+
+    def balanceservices(role, environment)
+      options = { :headers => @auth}
+      # output is runlist
+      JSON::parse self.class.get("/servicebalance/#{role}/#{environment}", options)
+    end
+
+    def getservices()
+      options = { :headers => @auth}
+      # output is all service entries
+      JSON::parse self.class.get("/services", options)
+    end
   end
 end
