@@ -69,10 +69,10 @@ module GTAPI
         'name' => name,
         'keys' => keys,
         'weight' => weight,
-        'endabled' => enabled,
+        'enabled' => enabled,
         'role' => role,
         'environment' => environment
-      }
+      }.to_json
       options = {:body => @body, :headers => @auth}
       # output is service count
       JSON::parse self.class.put("/service/#{role}/#{environment}", options)
