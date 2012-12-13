@@ -65,7 +65,7 @@ module GTAPI
     end
 
     def addservice(role, environment, name, keys, weight, enabled)
-      @body => {
+      @body = {
         'name' => name,
         'keys' => keys,
         'weight' => weight,
