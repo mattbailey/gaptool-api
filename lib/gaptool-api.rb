@@ -95,5 +95,10 @@ module GTAPI
       # output is all service entries
       JSON::parse self.class.get("/services", options)
     end
+
+    def getallnodes()
+      options = { :headers => @auth}
+      JSON::parse self.class.get("/hosts", options)
+    end
   end
 end
