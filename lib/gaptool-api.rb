@@ -10,6 +10,11 @@ module GTAPI
       GaptoolServer.base_uri uri
     end
 
+    def remoteredisllen(list)
+      options = {:body => list, :headers => @auth}
+      JSON::parse self.class.post("/status/redis/llen", options)
+    end
+
     def redishash(hash)
       options = {:body => hash, :headers => @auth}
       JSON::parse self.class.post("/redishash", options)
