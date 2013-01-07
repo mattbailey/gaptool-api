@@ -10,6 +10,11 @@ module GTAPI
       GaptoolServer.base_uri uri
     end
 
+    def redishash(hash)
+      options = {:body => hash, :headers => @auth}
+      JSON::parse self.class.post("/redishash", options)
+    end
+
     def getonenode(role, environment, id)
       options = {:headers => @auth}
       JSON::parse self.class.get("/host/#{role}/#{environment}/#{id}", options)
