@@ -20,6 +20,12 @@ module GTAPI
       JSON::parse self.class.post("/status/redis/llen", options)
     end
 
+    def remoteredislpush(list, value)
+      @body = {'list' => list, 'value' => value}.to_json
+      options = {:body => @body, :headers => @auth}
+      JSON::parse self.class.post("/status/redis/lpush", 
+    end
+
     def redishash(hash)
       options = {:body => hash, :headers => @auth}
       JSON::parse self.class.post("/redishash", options)
