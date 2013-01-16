@@ -31,9 +31,9 @@ module GTAPI
       JSON::parse self.class.post("/redishash", options)
     end
 
-    def getonenode(role, environment, id)
+    def getonenode(id)
       options = {:headers => @auth}
-      JSON::parse self.class.get("/host/#{role}/#{environment}/#{id}", options)
+      JSON::parse self.class.get("/instance/#{id}", options)
     end
 
     def getenvroles(role, environment)
@@ -115,6 +115,16 @@ module GTAPI
       options = { :headers => @auth}
       # output is all service entries
       JSON::parse self.class.get("/services", options)
+    end
+
+    def getrolenodes(role)
+      options = { :headers => @auth}
+      JSON::parse self.class.get("/hosts/#{role}", options)
+    end
+
+    def getenvnodes(environment)
+      options = { :headers => @auth}
+      JSON::parse self.class.get("/hosts/ALL/#{environment}", options)
     end
 
     def getallnodes()
