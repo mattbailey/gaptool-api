@@ -131,5 +131,34 @@ module GTAPI
       options = { :headers => @auth}
       JSON::parse self.class.get("/hosts", options)
     end
+
+    def svcapi_getkey(service)
+      options = { :headers => @auth}
+      JSON::parse self.class.get("/servicekeys/use/#{service}", options)
+    end
+
+    def svcapi_releasekey(service,key)
+      options = {:body => {"key" => key}.to_json , :headers => @auth}
+      JSON::parse self.class.post("/servicekeys/release/#{service}", options)
+    end
+
+    def svcapi_showkeys(service)
+      options = { :headers => @auth}
+      unless service == :all
+        JSON::parse self.class.get("/servicekeys/#{service}", options)
+      else
+        JSON::parse self.class.get("/servicekeys", options)
+      end
+    end
+
+    def svcapi_deletekey(service, key)
+      options = {:body => {"key" => key}.to_json , :headers => @auth}
+      JSON::parse self.class.delete("/servicekeys/#{service}", options)
+    end
+
+    def svcapi_putkey(service, key)
+      options = {:body => {"key" => key}.to_json , :headers => @auth}
+      JSON::parse self.class.put("/servicekeys/#{service}", options)
+    end
   end
 end
