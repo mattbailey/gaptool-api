@@ -4,6 +4,7 @@ require 'json'
 module GTAPI
   class GaptoolServer
     include HTTParty
+    default_timeout 3000
 
     def initialize(user, apikey, uri)
       @auth = { 'X-GAPTOOL-USER' => user, 'X-GAPTOOL-KEY' => apikey}
