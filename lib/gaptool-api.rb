@@ -32,6 +32,11 @@ module GTAPI
       JSON::parse self.class.post("/redishash", options)
     end
 
+    def rehash()
+      options = {:body => '', :headers => @auth}
+      JSON::parse self.class.post("/rehash", options)
+    end
+
     def getonenode(id)
       options = {:headers => @auth}
       JSON::parse self.class.get("/instance/#{id}", options)
